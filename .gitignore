@@ -1,0 +1,66 @@
+# Build directories
+/build/
+/out/
+/CMakeFiles/
+CMakeCache.txt
+
+# Compiled binaries
+*.exe
+*.dll
+*.lib
+*.obj
+*.pdb
+*.a
+*.so
+*.dylib
+
+# IDE and editor files
+.vs/
+.vscode/
+.idea/
+*.sln
+*.vcxproj*
+*.user
+*.sln.DotSettings
+*.swp
+*.swo
+
+# CMake
+*.cmake
+CMakeSettings.json
+
+# Logs and runtime files
+*.log
+afglobal.log
+afglobal_debug.log
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+.Trash/
+
+# User-specific config
+afglobal_config.json.user
+
+# Dependencies
+vcpkg_installed/
+conan/
+
+# Temporary files
+*.tmp
+*.temp
+~*
+*.bak
+
+# Visual Studio
+Debug/
+Release/
+x64/
+x86/
+*.VC.db
+*.VC.VC.opendb
+
+# Inno Setup
+Output/
+*.iss.obj
