@@ -1,5 +1,5 @@
 # PowerShell build script for AMD Global Frame Generator
-# Requires: Visual Studio 2019/2022, CMake, PowerShell 5.1+
+# Requires: Visual Studio 2019/2022/2026, CMake, PowerShell 5.1+
 
 param(
     [string]$CMakePath = "cmake",
@@ -43,9 +43,9 @@ Write-Info ""
 Write-Info "Configuring project with CMake..."
 Write-Info ""
 
-# Try Visual Studio 2022 first, then 2019, then Ninja, then default
+# Try Visual Studio 2026 first (newest), then 2022, 2019, then Ninja, then default
 $generator = $null
-$generators = @("Visual Studio 17 2022", "Visual Studio 16 2019", "Ninja", "")
+$generators = @("Visual Studio 18 2026", "Visual Studio 17 2022", "Visual Studio 16 2019", "Ninja", "")
 
 foreach ($gen in $generators) {
     if ([string]::IsNullOrEmpty($gen)) {

@@ -45,11 +45,12 @@ AFGlobalFrameGenerator/
 
 - **OS**: Windows 10 or Windows 11 (x64 only)
 - **Build Tools**: 
-  - Visual Studio 2019 or later with C++ workload
+  - Visual Studio 2019, 2022, or 2026 with C++ workload
   - CMake 3.20 or later
   - Inno Setup 6.0+ (for building installer)
+  - vcpkg (optional, for MinHook DLL support)
 - **Dependencies**:
-  - MinHook 3.3.2 (auto-fetched via CMake)
+  - MinHook 3.3.2+ (for DLL injection - installed via vcpkg)
   - nlohmann/json (auto-fetched via CMake)
   - DirectX 12 SDK headers
   - AMD AMF SDK (optional, for optical flow)
