@@ -10,7 +10,7 @@
 #define MyAppConfigName "afglobal_config.json"
 
 [Setup]
-AppId={{DCDB4B6E-F1A7-4A2F-9D3E-8C2B5E7A9F1D}
+AppId={{DCDB4B6E-F1A7-4A2F-9D3E-8C2B5E7A9F1D}}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 AppPublisher={#MyAppPublisher}
