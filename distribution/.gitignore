@@ -1,11 +1,10 @@
-# Build & Output
+# Build directories
 /build/
 /out/
 /CMakeFiles/
-/installer/output/
 CMakeCache.txt
 
-# Compiled Binaries & Libraries
+# Compiled binaries
 *.exe
 *.dll
 *.lib
@@ -15,7 +14,7 @@ CMakeCache.txt
 *.so
 *.dylib
 
-# IDE & Editor
+# IDE and editor files
 .vs/
 .vscode/
 .idea/
@@ -30,25 +29,25 @@ CMakeCache.txt
 *.cmake
 CMakeSettings.json
 
-# Logs & Runtime
+# Logs and runtime files
 *.log
-afglobal*.log
+afglobal.log
 afglobal_debug.log
 
-# Operating System
+# OS
 .DS_Store
 Thumbs.db
 desktop.ini
 .Trash/
 
-# User Config
+# User-specific config
 afglobal_config.json.user
 
 # Dependencies
 vcpkg_installed/
 conan/
 
-# Temporary & Backup
+# Temporary files
 *.tmp
 *.temp
 ~*
@@ -63,4 +62,5 @@ x86/
 *.VC.VC.opendb
 
 # Inno Setup
+Output/
 *.iss.obj

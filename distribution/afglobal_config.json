@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "target_multiplier": 2,
+  "process_blacklist": [
+    "explorer.exe",
+    "dwm.exe",
+    "svchost.exe"
+  ],
+  "process_whitelist": [],
+  "fallback_blend_only": false,
+  "log_level": "INFO",
+  "hotkey": "CTRL+SHIFT+F"
+}

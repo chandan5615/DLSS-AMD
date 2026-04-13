@@ -1,42 +1,80 @@
 # AMD Global Frame Generator
 
-Global multi-frame generation injector for AMD iGPUs. Monitors running processes, injects a hooking DLL into DirectX/Vulkan games, and generates extra frames using AMD AMF optical flow.
-
-## Quick Start ⚡
-
-### Use Pre-Built Installer (Easiest)
-```powershell
-.\installer\output\AFGlobalFGSetup.exe
-```
-Installs to `C:\Program Files\AMDGlobalFG\afglobal.exe`
-
-### Run Directly (Testing)
-```powershell
-.\build\bin\afglobal.exe
-```
-
-### Rebuild from Source
-```powershell
-./build.ps1
-```
-Requires: Visual Studio 2019+ with C++ workload, CMake 3.20+
+A production-ready C++ Windows application that works as a global multi-frame generation injector for AMD iGPUs. This application monitors running processes, injects a hooking DLL into DirectX/Vulkan games, and uses AMD AMF's optical flow capabilities to generate extra frames between real frames, effectively multiplying framerate.
 
 ## Features
 
-- 🎮 System Tray Application
-- 🔍 Process Monitoring & Auto DLL Injection
-- ⚡ 2x/3x/4x Frame Generation
-- ⌨️ Global Hotkey (Ctrl+Shift+F)
-- 🔌 Named Pipe IPC
-- 📝 Comprehensive Logging
+- **System Tray Application**: Runs silently in the background with system tray integration
+- **Process Monitoring**: Continuously monitors all running processes for new game launches
+- **Automatic DLL Injection**: Injects the hooking DLL into detected graphics applications
+- **Frame Generation**: Generates 2x, 3x, or 4x frames using optical flow or blending
+- **Global Hotkey**: Ctrl+Shift+F to toggle frame generation at runtime
+- **Named Pipe Communication**: Real-time communication between executable and DLL
+- **Rotating Logs**: Comprehensive logging for debugging and monitoring
+- **Configuration Management**: JSON-based configuration with hot-reload support
 
-## Status ✅
+## Project Structure
 
-| Component | Status | Size |
-|-----------|--------|------|
-| afglobal.exe | ✅ Built | 438.5 KB |
-| AFGlobalFGSetup.exe | ✅ Ready | 2.2 MB |
-| afglobal_config.json | ✅ Available | - |
+```
+AFGlobalFrameGenerator/
+├── src/
+│   ├── common/              # Shared code
+│   │   ├── config.h/cpp
+│   │   ├── constants.h
+│   │   └── logger.h/cpp
+│   ├── afglobal_exe/        # Main executable
+│   │   ├── main.cpp
+│   │   ├── tray_app.h/cpp
+│   │   ├── process_monitor.h/cpp
+│   │   ├── injector.h/cpp
+│   │   └── named_pipe_client.h/cpp
+│   └── afglobal_dll/        # Injectable DLL
+│       ├── dllmain.cpp
+│       ├── dxgi_hooks.h/cpp
+│       ├── frame_interpolator.h/cpp
+│       ├── amf_optical_flow.h/cpp
+│       └── named_pipe_server.h/cpp
+├── installer/
+│   └── afglobal_installer.iss
+├── CMakeLists.txt
+├── afglobal_config.json
+└── README.md
+```
+
+## Requirements
+
+- **OS**: Windows 10 or Windows 11 (x64 only)
+- **Build Tools**: 
+  - Visual Studio 2019, 2022, or 2026 with C++ workload
+  - CMake 3.20 or later
+  - Inno Setup 6.0+ (for building installer)
+  - vcpkg (optional, for MinHook DLL support)
+- **Dependencies**:
+  - MinHook 3.3.2+ (for DLL injection - installed via vcpkg)
+  - nlohmann/json (auto-fetched via CMake)
+  - DirectX 12 SDK headers
+  - AMD AMF SDK (optional, for optical flow)
+
+## Building from Source
+
+### Prerequisites
+
+1. **Visual Studio 2019 or 2022** with C++ workload installed
+   - Download from: https://visualstudio.microsoft.com/downloads/
+   - Select "Desktop development with C++" workload
+
+2. **CMake 3.20 or later**
+   - Download from: https://cmake.org/download/
+   - Add to system PATH for command-line access
+
+3. **DirectX 12 SDK headers** (included with Visual Studio)
+
+4. **Git** (optional, for cloning the repository)
+   - Download from: https://git-scm.com/downloads
+
+### Quick Build (Recommended)
+
+**Windows PowerShell (Recommended)**:
 
 ```powershell
 # Navigate to project directory

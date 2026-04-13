@@ -11,8 +11,8 @@ echo ========================================
 echo.
 
 REM Look for Inno Setup installation
-set ISCC=""
-for /f "tokens=*" %%i in ('where iscc.exe 2^>nul') do set ISCC=%%i
+set ISCC=
+for %%a in (iscc.exe) do set ISCC=%%~$PATH:a
 
 if "%ISCC%"=="" (
     REM Try common installation paths
@@ -20,6 +20,10 @@ if "%ISCC%"=="" (
         set ISCC=C:\Program Files (x86)\Inno Setup 6\iscc.exe
     ) else if exist "C:\Program Files\Inno Setup 6\iscc.exe" (
         set ISCC=C:\Program Files\Inno Setup 6\iscc.exe
+    ) else if exist "C:\Program Files (x86)\Inno Setup 5\iscc.exe" (
+        set ISCC=C:\Program Files (x86)\Inno Setup 5\iscc.exe
+    ) else if exist "C:\Program Files\Inno Setup 5\iscc.exe" (
+        set ISCC=C:\Program Files\Inno Setup 5\iscc.exe
     )
 )
 
@@ -27,6 +31,7 @@ if "%ISCC%"=="" (
     echo ERROR: Inno Setup not found!
     echo Please install Inno Setup 6.0 or later from:
     echo https://jrsoftware.org/isdl.php
+    pause
     exit /b 1
 )
 
@@ -36,14 +41,17 @@ echo.
 REM Verify build artifacts exist
 if not exist "build\bin\afglobal.exe" (
     echo ERROR: afglobal.exe not found!
-    echo Please run build.bat first to compile the project.
+    echo Please run build.ps1 first to compile the project.
     exit /b 1
 )
 
 if not exist "build\bin\afglobal_hook.dll" (
-    echo ERROR: afglobal_hook.dll not found!
-    echo Please run build.bat first to compile the project.
-    exit /b 1
+    echo WARNING: afglobal_hook.dll not found - DLL injection disabled
+    echo This requires MinHook installation
+    echo See MINHOOK_INSTALLATION.md for setup instructions
+    echo.
+    echo The installer will include exe only.
+    echo.
 )
 
 echo Build artifacts verified.
